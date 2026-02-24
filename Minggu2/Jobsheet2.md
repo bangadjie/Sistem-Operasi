@@ -337,25 +337,25 @@ keluar.
 ```
 1 sleep 300 &
 ```
-![Make Dummy](Images/2.14%20make%20dummy.png "")
+![Make Dummy](Images/2.14peosesDummy.png "")
 
 2. Cari PID proses sleep:
 ```
 1 ps aux | grep -E " sleep 300 " | grep -v grep
 ```
-![Search](Images/2.14%20search%20PID.png "")
+![Search](Images/2.14peosesDummy.png "")
 
 3. Hentikan dengan SIGTERM:
 ```
 1 kill < PID_ANDA >
 ```
-![Kill](Images/2.14%20Send%20sigterm.png "")
+![Kill](Images/2.14MengirimSigterm.png "")
 
 4. Verifikasi proses berhenti:
 ```
 1 ps aux | grep -E " sleep 300 " | grep -v grep
 ```
-![Verification](Images/2.14%20verif.png "")
+![Verification](Images/2.14berhenti.png "")
 
 5. (Opsional) Jika proses sulit untuk dihentikan dan Anda membutukan untuk menghentikan proses tersebut, gunakan SIGKILL:
 ```
@@ -367,50 +367,50 @@ keluar.
 ```
 1 df -h
 ```
-![Disk](Images/2.15%20DiskCheck.png "")
+![Disk](Images/2.15cekDisk.png "")
 
 2. Cari direktori yang besar (contoh pada /var):
 ```
 1 sudo du - sh / var /* 2 >/ dev / null | sort -h | tail -n 10
 ```
-![Directory](Images/2.15%20Directory.png "")
+![Directory](Images/2.15cekUkuran.png "")
 
 3. Cek load dan uptime:
 ```
 1 uptime
 ```
-![Load and uptime](Images/2.15%20load.png "")
+![Load and uptime](Images/2.15Load.png "")
 
 4. Cek service yang gagal:
 ```
 1 systemctl -- failed
 ```
-![service](Images/2.15%20failed%20services.png "")
+![service](Images/2.15system.png "")
 
 5. Ambil log error terbaru (jika ada indikasi masalah):
 ```
 1 journalctl - xe | tail -n 50
 ```
-![Error log](Images/2.15%20log%20error.png "")
+![Error log](Images/2.15logError.png "")
 
 ## Praktikum 2.16 — Monitoring Port dan Koneksi (Network Basics)
 1. Lihat interface dan IP:
 ```
 1 ip a
 ```
-![IP Check](Images/2.16%20Ip%20Check.png "")
+![IP Check](Images/2.16ipA.png "")
 
 2. Lihat routing table:
 ```
 1 ip r
 ```
-![Router Check](Images/2.16%20Route%20Check.png "")
+![Router Check](Images/2.16root.png "")
 
 3. Lihat port yang sedang listening:
 ```
 1 sudo ss - tulpn
 ```
-![Port Check](Images/2.16%20port%20check.png "")
+![Port Check](Images/2.16port.png "")
 
 ### Latihan 2.5
 Pilih satu port yang listening dari output ss -tulpn(misal port 22), lalu tuliskan service/proses yang membukanya. Jelaskan kegunaan port tersebut secara singkat.
