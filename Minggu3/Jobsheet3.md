@@ -120,3 +120,42 @@ echo "Hari ini adalah $(date)"
 FILE_COUNT=$(ls | wc -l)
 echo "Ada $FILE_COUNT file di direktori ini"
 ```
+## 1.11 Latihan
+1. Latihan 3.1: Daftar 10 File Terbesar
+Menampilkan 10 file terbesar di /var/log/
+```
+sudo du -ah /var/log/ | sort -rh | head -n 10 | tee large-logs.txt 2> error.log
+```
+![Latihan3.1](Images/Latihan3.1.png"Latihan3.1")
+2. Latihan 3.2: Ekstrak Username dari /etc/passwd
+```
+cut -d: -f1 /etc/passwd | sort > sorted-users.txt
+
+cut -d: -f1 /etc/passwd | sort | tee sorted-users.txt
+```
+![Latihan3.2](Images/Latihan3.2.png"Latihan3.2")
+3. Latihan 3.3: Script Monitoring CPU dan Memory
+```
+for i in {1..12}; do
+    echo "--- $(date) ---" | tee -a monitor.log
+    top -bn1 | grep "Cpu(s)" | tee -a monitor.log
+    free -m | tee -a monitor.log
+    sleep 5
+done
+```
+![Latihan3.3](Images/Latihan3.3.png"Latihan3.3")
+4. Latihan 3.4: Mencari File Konfigurasi
+```
+find / -name "*.conf" 2> /dev/null | tee list_conf.txt | wc -l
+
+find /etc -name "*.conf" 2> /dev/null | tee list_conf.txt | wc -l
+```
+![Latihan3.4](Images/Latihan3.4.png"Latihan3.4")
+5. Latihan 3.5: Script Backup dengan Log
+```
+tar -cvf backup.tar ~/Documents 2> >(while read line; do echo "$(date): $line"; done > backup-error.log) | while read line; do echo "$(date): $line"; done | tee backup-success.log
+
+# Perintah backup dengan pemisahan log dan timestamp
+tar -cvf backup.tar ~/Documents > >(while read line; do echo "$(date): $line"; done | tee backup-success.log) 2> >(while read line; do echo "$(date): $line"; done | tee backup-error.log)
+```
+![Latihan3.5](Images/Latihan3.5.png"Latihan3.5")
