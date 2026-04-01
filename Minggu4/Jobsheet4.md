@@ -5,50 +5,52 @@
 <h4> Kelas  : TI-1G <h4>
 
 ## Latihan 1
-1. 
+
+1.
+
 ```
 $ cd
+$ pwd
+$ $ls -al
+$ cd .
+$ pwd
+$ cd ..
+$ pwd
+$ ls -al
+$ cd ..
+$ pwd
+$ ls -al
+$ cd /etc
+$ ls -al | more
+$ cat passwd
+$ cd -
+$ pwd
 ```
-asdfadf
-```
-$pwd
-```
-asdfasfas
-```
-$ls -al
-```
-cd .
-```
-pwd
-```
-cd ..
-```
-```
-pwd
-```
-ls -al
-```
-cd ..
-```
-pwd
-```
-ls -al
-```
-cd /etc
-```
-ls -al | more
-```
-cat passwd
-```
-cd -
-```
-pwd
-```
-2. Lanjutkan penelusuran pohon pada sistem file menggunakan cd, 18, pwd dan cat. Telusuri direktory/bin, /usr/bin, /sbin, /tmpdan/boot.
 
-3. Telusuri direktory/dev. Identifikasi perangkat yang tersedia. Identifikasi tty (termninal) Anda (ketik who am 1); siapa pemilih tty Anda (gunakan 18 -1)
+![///](Images/ls-al.png"ls -al")
+![///](Images/ls-al2.png"ls -al")
+![///](Images/ls-al3.png"ls -al")
+![///](Images/ls-almore.png"ls -al")
+![///](Images/lastPWD.png"ls -al")
+
+2. Lanjutkan penelusuran pohon pada sistem file menggunakan cd, ls, pwd dan cat. Telusuri direktory/bin, /usr/bin, /sbin, /tmp dan/boot.
+   ![///](Images/lsbin.png"lsbin.png")
+   ![///](Images/lsusrbin.png"lsusrbin.png")
+   ![///](Images/lssbin.png"lssbin.png")
+   ![///](Images/lstmp.png"lstmp.png")
+   ![///](Images/lsboot.png"lsboot.png")
+
+3. Telusuri direktory/dev. Identifikasi perangkat yang tersedia. Identifikasi tty (termninal) Anda (ketik who am 1); siapa pemilih tty Anda (gunakan ls -1)
+   ![///](Images/lsdev.png"lsdev.png")
 
 4. Telusuri derectory/proc. Tampilkan isi file interrupts, devices, cpuinfo, meminfo dan uptime menggunakan perintah cat. Dapatkah Anda melihat mengapa directory/proc disebut pseudo-filesystem yang memungkinkan akses ke struktur data kernel ?
+
+   ![///](Images/lsproc.png"lsproc.png")
+   ![///](Images/catinterrup.png"catinterrup.png")
+   ![///](Images/catdevice.png"catdevice.png")
+   ![///](Images/catCpuinfo.png"catCpuinfo.png")
+   ![///](Images/catMeminfo.png"catMeminfo.png")
+   ![///](Images/catUptime.png"catUptime.png")
 
 5. Ubahlah direktory home ke user lain secara langsung menggunakan ed username.
 
@@ -71,4 +73,4 @@ pwd
 14. Masih direktory home, copy keseluruhan direktory play ke direktory bernama work menggunakan symbolic link.
 
 15. Hapus direktory work dan isinya dengan satu perintah
-![alt text](image.png)
+    ![alt text](image.png)
