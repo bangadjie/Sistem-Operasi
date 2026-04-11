@@ -11,12 +11,14 @@ echo " Shell login : $SHELL "
 echo " Shell aktif : $0"
 bash -- version | head -n 1
 ```
+![ ](Images/6.1.1.png "  ")
 Kode 1.1: Melihat shell login dan shell aktif
 2. Lihat proses shell yang sedang berjalan:
 ```
 echo $$
 ps -p $$ -o pid , ppid , args =
 ```
+![ ](Images/6.1.2.png "  ")
 Kode 1.2: Melihat proses shell aktif
 2 1 Bash Shell dan Shell Basic
 1.1 Pengenalan Bash sebagai Shell Default di Linux
@@ -40,6 +42,7 @@ touch "ruang - nama / laporan server april .txt"
 touch "ruang - nama / backup [ mingguan ] server . conf "
 ls -R
 ```
+![ ](Images/6.1.4.png "  ")
 Kode 1.4: Membuat file contoh untuk praktikum lanjutan
 
 ## Praktikum 6.2 — Membuat Ringkasan Sesi Terminal
@@ -47,6 +50,7 @@ Kode 1.4: Membuat file contoh untuk praktikum lanjutan
 ```
 cd ~/ praktikum - os / week04 - bash
 ```
+![ ](Images/6.2.1.png "  ")
 Kode 1.5: Masuk ke workspace praktikum
 2. Simpan informasi sesi terminal ke file laporan:
 ```
@@ -63,23 +67,28 @@ echo "PID shell : $$"
 echo " Direktori : $(pwd)"
 } | tee session - info . txt
 ```
+![ ](Images/6.2.2.png "  ")
 Kode 1.6: Membuat ringkasan sesi terminal
 3. Verifikasi isi file laporan:
 ```
 cat session - info . txt
 ```
+![ ](Images/6.2.3.png "  ")
 Kode 1.7: Membaca ringkasan sesi
+
 ## Praktikum 6.3 — Menambahkan Konfigurasi Aman pada .bashrc
 Tujuan: memahami peran .bashrc dan menerapkan perubahan secara aman.
 1. Lihat file konfigurasi Bash pada home directory:
 ```
 ls - la ~ | grep -E 'bashrc | bash_profile | profile '
 ```
+![ ](Images/6.3.1.png "  ")
 Kode 1.8: Melihat file konfigurasi Bash
 2. Buat backup .bashrc:
 ```
 cp ~/. bashrc ~/. bashrc . bak - praktikum
 ```
+![ ](Images/6.3.2.png "  ")
 Kode 1.9: Backup .bashrc
 3. Tambahkan blok konfigurasi praktikum:
 ```
@@ -91,6 +100,7 @@ export EDITOR = nano
 # --- End Praktikum Bash Shell ---
 EOF
 ```
+![ ](Images/6.3.3.png "  ")
 Kode 1.10: Menambahkan konfigurasi ke .bashrc
 4. Terapkan konfigurasi tanpa logout:
 ```
@@ -98,13 +108,16 @@ source ~/. bashrc
 echo " $PRAKTIKUM_BASH_DIR "
 echo " $EDITOR "
 ```
+![ ](Images/6.3.4.png "  ")
 Kode 1.11: Memuat ulang .bashrc
+
 ## Praktikum 6.4 — Menyiapkan .bash_profile untuk Shell Login
 1. Backup .bash_profile jika sudah ada:
 ```
 [ -f ~/. bash_profile ] && cp ~/. bash_profile ~/.
 bash_profile . bak - praktikum
 ```
+![ ](Images/6.4.1.png "  ")
 Kode 1.12: Backup .bash_profile jika tersedia
 2. Tambahkan konfigurasi login shell:
 cat <<'EOF ' >> ~/. bash_profile
@@ -115,9 +128,10 @@ if [ -f ~/. bashrc ]; then
 fi
 echo " Login Bash pada $( date '+%F %T ')" >> " $HOME /
 praktikum -os/week07 - bash /login - audit .log"
-```
 ### --- End Praktikum Bash Login Shell ---
+```
 EOF
+![ ](Images/6.4.2.png "  ")
 Kode 1.13: Menambahkan konfigurasi ke .bash_profile
 3. Uji dengan membuka login shell baru:
 ```
@@ -125,6 +139,7 @@ bash -l
 tail -n 3 ~/ praktikum - os / week07 - bash / login - audit . log
 exit
 ```
+![ ](Images/6.4.3.png "  ")
 Kode 1.14: Menguji .bash_profile dengan login shell
 
 ## Praktikum 6.5 — Membedakan Variabel Shell dan Environment Variable
@@ -133,6 +148,7 @@ Kode 1.14: Menguji .bash_profile dengan login shell
 KELAS_OS =" Sistem Operasi A"
 echo " $KELAS_OS "
 ```
+![ ](Images/6.5.1.png "  ")
 Kode 1.15: Membuat variabel shell lokal
 2. Buka subshell dan cek apakah variabel masih ada:
 ```
@@ -140,6 +156,7 @@ bash
 echo " $KELAS_OS "
 exit
 ```
+![ ](Images/6.5.2.png "  ")
 Kode 1.16: Menguji variabel lokal pada subshell
 3. Sekarang ubah menjadi environment variable:
 ```
@@ -148,6 +165,7 @@ bash
 echo " $KELAS_OS "
 exit
 ```
+![ ](Images/6.5.3.png "  ")
 Kode 1.17: Membuat environment variable
 4. Lihat isi PATH dan lokasi beberapa perintah:
 ```
@@ -155,12 +173,15 @@ echo " $PATH "
 which bash
 type ls
 ```
+![ ](Images/6.5.4.png "  ")
 Kode 1.18: Melihat PATH dan lokasi perintah
+
 ## Praktikum 6.6 — Menambahkan Direktori Script Pribadi ke PATH
 1. Pastikan direktori bin praktikum tersedia:
 ```
 mkdir -p ~/ praktikum - os / week07 - bash / bin
 ```
+![ ](Images/6.6.1.png "  ")
 Kode 1.19: Menyiapkan direktori bin
 2. Tambahkan direktori tersebut ke PATH melalui .bashrc:
 cat <<'EOF ' >> ~/. bashrc
@@ -174,6 +195,7 @@ EOF
 source ~/. bashrc
 echo " $PATH "
 ```
+![ ](Images/6.6.2.png "  ")
 Kode 1.20: Menambahkan direktori bin ke PATH
 3. Buat script ringkasan sistem:
 ```
@@ -188,13 +210,16 @@ df -h /
 EOF
 chmod + x ~/ praktikum - os / week07 - bash / bin / ringkas - sistem
 ```
+![ ](Images/6.6.3.png "  ")
 Kode 1.21: Membuat script ringkas-sistem
 4. Jalankan script dari direktori yang berbeda:
 ```
 cd ~
 ringkas - sistem
 ```
+![ ](Images/6.6.4.png "  ")
 Kode 1.22: Menjalankan script dari sembarang lokasi
+
 ## Praktikum 6.7 — Membuat Alias Produktivitas Dasar
 1. Tambahkan alias ke .bashrc:
 cat <<'EOF ' >> ~/. bashrc
@@ -209,6 +234,7 @@ alias cdbashlab ='cd $HOME / praktikum -os/week04 - bash '
 EOF
 source ~/. bashrc
 ```
+![ ](Images/6.7.1.png "  ")
 Kode 1.23: Menambahkan alias ke .bashrc
 2. Uji alias:
 ```
@@ -219,6 +245,8 @@ pwd
 type ll
 Kode 1.24: Menguji alias
 ```
+![ ](Images/6.7.2.png "  ")
+
 ## Praktikum 6.8 — Membuat Fungsi Backup Konfigurasi
 1. Siapkan file konfigurasi contoh:
 ```
@@ -226,6 +254,7 @@ echo " PORT =8080 " > ~/ praktikum - os / week07 - bash / sample -
 app . conf
 cat ~/ praktikum - os / week07 - bash / sample - app . conf
 ```
+![ ](Images/6.8.1.png "  ")
 Kode 1.25: Membuat file konfigurasi contoh
 2. Tambahkan fungsi ke .bashrc:
 ```
@@ -255,6 +284,7 @@ echo " Backup selesai di $dst "
 EOF
 source ~/. bashrc
 ```
+![ ](Images/6.8.2.png "  ")
 Kode 1.26: Menambahkan fungsi backup_conf ke .bashrc
 3. Uji fungsi:
 ```
@@ -262,7 +292,9 @@ backup_conf ~/ praktikum - os / week07 - bash / sample - app . conf
 ls - lah ~/ praktikum - os / week07 - bash / backup
 type backup_conf
 ```
+![ ](Images/6.8.3.png "  ")
 Kode 1.27: Menguji fungsi backup_conf
+
 ## Praktikum 6.9 — Menggunakan Completion Dasar dan Melihat History
 1. Pastikan file contoh tersedia:
 ```
@@ -271,11 +303,13 @@ touch laporan - harian . log laporan - mingguan . log laporan -
 bulanan . log
 ls
 ```
+![ ](Images/6.9.1.png "  ")
 Kode 1.28: Menyiapkan file untuk completion
 2. Uji completion file:
 a) Ketik cat lap lalu tekan Tab dua kali.
 b) Amati daftar file yang memiliki prefix lap.
 c) Ketik lebih spesifik, misalnya cat laporan-h lalu tekan Tab.
+![ ](Images/6.9.2.png "  ")
 3. Jalankan beberapa perintah sederhana:
 ```
 pwd
@@ -284,7 +318,9 @@ date
 whoami
 history | tail -n 10
 ```
+![ ](Images/6.9.3.png "  ")
 Kode 1.29: Menjalankan beberapa perintah untuk history
+
 ## PPraktikum 6.10 — Menelusuri Perintah Diagnostik dengan History
 1. Jalankan beberapa perintah diagnostik:
 ```
@@ -293,16 +329,19 @@ free -h
 uptime
 ps aux | head
 ```
+![ ](Images/6.10.1.png "  ")
 Kode 1.30: Menjalankan perintah diagnostik
 2. Cari ulang perintah diagnostik dari history:
 ```
 history | grep -E 'df -h| free -h| uptime |ps aux '
 ```
+![ ](Images/6.10.2.png "  ")
 Kode 1.31: Mencari perintah dari history
 3. Jalankan ulang salah satu perintah berdasarkan nomor history:
 ```
 ! < NOMOR_HISTORY_ANDA >
 ```
+![ ](Images/6.10.3.png "  ")
 Kode 1.32: Menjalankan ulang perintah dari history
 4. Simpan potongan history ke file dokumentasi:
 ```
@@ -310,6 +349,7 @@ history | tail -n 20 > ~/ praktikum - os / week07 - bash / diag
 - history . txt
 cat ~/ praktikum - os / week07 - bash / diag - history . txt
 ```
+![ ](Images/6.10.3.png.png "  ")
 Kode 1.33: Menyimpan history ke file
 
 ## Praktikum 6.11 — Mencoba Wildcard Dasar
@@ -318,6 +358,7 @@ Kode 1.33: Menyimpan history ke file
 cd ~/ praktikum - os / week07 - bash / sampel
 ls
 ```
+![ ](Images/6.11.1.png "  ")
 Kode 1.34: Masuk ke direktori sampel
 2. Coba beberapa pola wildcard:
 ```
@@ -325,6 +366,7 @@ ls *. log
 ls catatan -?. txt
 ls backup -0[12]. tar
 ```
+![ ](Images/6.11.2.png "  ")
 Kode 1.35: Mencoba wildcard dasar
 3. Coba beberapa ekspansi lain:
 ```
@@ -332,6 +374,7 @@ echo log -{ pagi , siang , malam }. txt
 echo ~
 echo ~/ praktikum - os / week04 - bash
 ```
+![ ](Images/6.11.3.png "  ")
 Kode 1.36: Mencoba brace dan tilde expansion
 
 ## Praktikum 6.12 — Mengarsipkan Banyak Log Sekaligus
@@ -341,12 +384,14 @@ cd ~/ praktikum - os / week07 - bash / logs
 touch access -01. log access -02. log access -03. log
 ls
 ```
+![ ](Images/6.12.1.png "  ")
 Kode 1.37: Menyiapkan file log tambahan
 2. Preview file yang akan diproses:
 ```
 echo *. log
 echo access -0?. log
 ```
+![ ](Images/6.12.2.png "  ")
 Kode 1.38: Preview hasil wildcard
 3. Pindahkan semua file log ke folder arsip:
 ```
@@ -354,12 +399,14 @@ mkdir -p arsip - log
 mv *. log arsip - log /
 ls arsip - log
 ```
+![ ](Images/6.12.3.png "  ")
 Kode 1.39: Memindahkan file log ke folder arsip
 4. Kompres folder arsip:
 ```
 tar - czf arsip - log - $ ( date +% F ) . tar . gz arsip - log
 ls - lah
 ```
+![ ](Images/6.12.4.png "  ")
 Kode 1.40: Membuat arsip terkompresi
 ## Praktikum 6.13 — Membedakan Single Quote, Double Quote, dan Escape
 1. Uji single quote dan double quote:
@@ -367,17 +414,20 @@ Kode 1.40: Membuat arsip terkompresi
 echo '$USER bekerja di $HOME '
 echo " $USER bekerja di $HOME "
 ```
+![ ](Images/6.13.1.png "  ")
 Kode 1.41: Menguji perbedaan jenis quote
 2. Uji escape karakter spasi:
 ```
 cd ~/ praktikum - os / week07 - bash / ruang - nama
 ls laporan \ server \ april . txt
 ```
+![ ](Images/6.13.2.png "  ")
 Kode 1.42: Menggunakan escape pada path
 3. Uji akses file yang sama dengan double quote:
 ```
 cat " laporan server april .txt"
 ```
+![ ](Images/6.13.2.png.png "  ")
 Kode 1.43: Menggunakan double quote pada path
 
 ## Praktikum 6.14 — Menangani File dengan Nama Sulit Secara Aman
@@ -386,6 +436,7 @@ Kode 1.43: Menggunakan double quote pada path
 cd ~/ praktikum - os / week07 - bash / ruang - nama
 ls - lah
 ```
+![ ](Images/6.14.1.png "  ")
 Kode 1.44: Memastikan file target tersedia
 2. Salin file dengan nama kompleks ke folder backup:
 ```
@@ -393,6 +444,7 @@ cp -- " backup [ mingguan ] server . conf " \
 " $HOME / praktikum -os/week07 - bash / backup /backup -
 mingguan - server . conf "
 ```
+![ ](Images/6.14.2.png "  ")
 Kode 1.45: Menyalin file dengan nama kompleks secara aman
 3. Gunakan variabel untuk memproses path dengan aman:
 
@@ -404,6 +456,7 @@ backup - mingguan -server -v2. conf "
 cp -- " $file_asli " " $file_salinan "
 ls - lah " $HOME / praktikum -os/week07 - bash / backup "
 ```
+![ ](Images/6.14.3.png "  ")
 Kode 1.46: Menggunakan variabel berisi path dengan aman
 4. Tampilkan daftar file hasil backup:
 ```
@@ -412,10 +465,15 @@ do
 printf 'Hasil backup : %s\n' " $file "
 done
 ```
+![ ](Images/6.14.4.png "  ")
 Kode 1.47: Menampilkan file hasil backup dengan aman
 ## 1.8 Tugas Praktikum
 
 ## Tugas Praktikum 1 — Toolkit Bash Administrator Pribadi
+![ ](Images/tugas1.png "  ")
 ## Tugas Praktikum 2 — Audit File Konfigurasi dan Logging Aman
+![ ](Images/tugas2.png  "  ")
 ## Tugas Praktikum 3 — Mini Health Check Harian Server
+![ ](Images/tugas3.png  "  ")
 ## Tugas Praktikum 4 — Penanganan File dengan Nama Kompleks dan Arsip Aman
+![ ](Images/tugas4.png  "  ")
